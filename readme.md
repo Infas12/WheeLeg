@@ -57,26 +57,36 @@
 0. 正确安装Ubuntu和ROS；确保所有机电接线连接无误，电调ID配置正确。
 
 1. 安装手柄控制的ROS包`Joy`。
-> `sudo apt-get install ros-<version>-joy` 
+
+```
+sudo apt-get install ros-<version>-joy
+```
 
 2. 创建一个工作空间，详情可[参见ROSWiki的这篇教程](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment#Create_a_ROS_Workspace)。
 
-> `mkdir ~/catkin_ws`
-> `cd ~/catkin_ws`
-> `mkdir src`
-> `catkin_make`
+```
+mkdir ~/catkin_ws
+cd ~/catkin_ws
+mkdir src
+catkin_make
+```
+
 
 编译成功后，应当能看到三个子目录：devel, build以及src。随后将此工作空间加入ros的检索范围：
 
-> `source ~/catkin_ws/devel/setup.bash`
+```
+source ~/catkin_ws/devel/setup.bash
+```
 
 
 3. 将包下载至src目录下，然后再次编译包。
 
-> `cd ~/catkin_ws/src`
-> `git clone https://github.com/Infas12/WheeLeg.git`
-> `cd ..`
-> `catkin_make`
+```
+cd ~/catkin_ws/src
+git clone https://github.com/Infas12/WheeLeg.git
+cd ..
+catkin_make
+```
 
 如果编译顺利通过，应该就可以使用了。
 
@@ -84,11 +94,15 @@
 
 1. 启动joy节点。
 
-> `rosrun joy joy_node`
+```
+rosrun joy joy_node
+```
 
 2. 启动wheelLeg的Chassis节点，控制底盘。
 
-> `rosrun WheeLeg chassis`
+```
+rosrun WheeLeg chassis
+```
 
 现在，推动左右摇杆，四个轮子应该会跟着动了。
 
@@ -103,14 +117,19 @@
 
 3. 启动wheeLeg的舵机控制节点。舵机节点是用python写的。
 
-> `rosrun WheeLeg test.py`
+```
+rosrun WheeLeg test.py
+```
 
 现在，按下手柄上的`B`键，舵机应当就会运动。
 
 可能的报错：
 
 * 如果提示找不到`test.py`，可能是没有给文件设置正确的权限。
-> `chmod +x test.py`
+```
+chmod +x test.py
+```
+
 
 如果出现了其他报错请直接联系我。
 
